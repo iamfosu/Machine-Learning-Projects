@@ -7,6 +7,10 @@
 
 <body>
 
+<div class="banner">
+    <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="Banner">
+    </div>    
+
 <div class="container">
 
     <h2>Breast Cancer Prediction</h2>
@@ -15,8 +19,10 @@
 
     <form action="/predict" method="post" autocomplete="off">
 
-        <textarea name="features" required></textarea>
-        placeholder="Example: 17.99,10.38,122.8,..."></textarea>
+        <textarea 
+        name="features" 
+        placeholder="Example: 17.99,10.38,122.8,...">
+        </textarea>
 
         <br>
 
@@ -26,6 +32,13 @@
     </form>
 
     <h3 id="result">{{ prediction_text }}</h3>
+
+    {% if image_file %}
+    <div class="result-image">
+        <img src="{{ url_for('static', filename='images/' + image_file) }}" alt="Result Image">
+    </div>
+    {% endif %}
+    
 
 </div>
 
